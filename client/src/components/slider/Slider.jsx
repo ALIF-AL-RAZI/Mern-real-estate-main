@@ -23,7 +23,8 @@ const Slider = ({images}) => {
   };
   return (
     <div className="slider">
-      {imageIndex !== null && (<div className="fullSlider">
+      {imageIndex !== null && 
+      (<div className="fullSlider">
         <div className="arrow">
           <img src="/arrow.png" alt="" onClick={()=>changeSlide("left")}/>
         </div>
