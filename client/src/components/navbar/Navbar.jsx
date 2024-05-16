@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import "./navbar.scss"
-import { CgMenuRound } from "react-icons/cg";
+
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
+  const user = true;
+
   return (
     <nav>
         <div className='left'>
@@ -17,8 +20,19 @@ const Navbar = () => {
           <a href='/'>Agents</a>
         </div>
         <div className='right'>
+          {user?
+          <div className='user'>
+            <img src="/user.jpg" alt="" />
+            <span>Alif Al Razi</span>
+            <Link className='profile' to='/profile'>
+              <div className="notification">3</div>
+              <span>Profile</span>
+            </Link>
+          </div>:
+          <>
           <a href='/'>Sign In</a>
           <a className='register' href='/'>Sign Up</a>
+          </>}
           <div className='menuIcon'>
             <img src='/menu.png' alt='' onClick={()=>setOpen((prev)=>!prev)}/>
           </div>

@@ -13,6 +13,7 @@ import {
 } from "react-router-dom";
 import Singlepage from "./routes/singlepage/Singlepage";
 import Login from "./routes/login/Login";
+import ProfilePage from "./routes/profilePage/ProfilePage";
 
 function App() {
 
@@ -37,6 +38,10 @@ function App() {
         {
           path: "/login",
           element: <Login/>
+        },
+        {
+          path: "/profile",
+          element: <ProfilePage/>
         },
         
       ]
