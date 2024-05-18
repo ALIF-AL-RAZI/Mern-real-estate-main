@@ -1,10 +1,23 @@
+import { Link, useNavigate } from "react-router-dom"
 import Chat from "../../components/chat/Chat"
 import List from "../../components/list/List"
 import "./profilePage.scss"
+import apiRequest from "../../lib/apiRequest"
 
 import React from 'react'
 
 const ProfilePage = () => {
+    const navigate = useNavigate();
+    const handleLogout =()=>{
+        try {
+            const res = apiRequest.post("/auth/logout");
+            localStorage.removeItem("user")
+            navigate("/");
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
   return (
     <div className="profilePage">
         <div className="details">
@@ -17,11 +30,13 @@ const ProfilePage = () => {
                     <span>Avatar: <img src="/user.jpg" alt="" /></span>
                     <span>Username: <b>Alif Al Razi</b></span>
                     <span>Email: <b>alif@gmail.com</b></span>
+                    <button onClick={handleLogout}>Log out</button>
                 </div>
 
                 <div className="title">
                     <h1>My List</h1>
-                    <button>Create New post</button>
+                    <Link to="/newPost"><button>Create New post</button></Link>
+                    
                 </div>
                 <List/>
                 <div className="title">
